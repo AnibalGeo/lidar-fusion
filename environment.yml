@@ -1,0 +1,13 @@
+name: lidar-fusion
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - pdal
+  - python-pdal
+  - laspy
+  - lazrs-python
+  - rasterio
+  - pyproj
+  - numpy
+  - pyyaml

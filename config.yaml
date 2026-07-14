@@ -1,0 +1,29 @@
+# lidar-fusion — stage 1: colorize a point cloud from an orthomosaic
+# Etapa 1: colorizar una nube de puntos a partir de un ortomosaico
+
+input:
+  cloud: ../out/03_classify/merged_class.laz     # LAS/LAZ, any point format
+  raster: ../00_Foto/20260330_1_S2B_U333.tif     # orthomosaic (GeoTIFF)
+
+# Both files must declare this CRS. No reprojection is done: fail loudly instead.
+# Ambos ficheros deben declarar este CRS. No se reproyecta: se falla explicitamente.
+crs: EPSG:32718
+
+raster_sampling:
+  bands: [1, 2, 3]        # bands to sample, in R,G,B order for colorization
+  alpha_band: 4           # alpha/mask band; null if the raster has none
+  alpha_min: 128          # alpha below this -> no valid colour
+  max_window_mb: 4096     # guard: refuse to load a bigger raster window
+
+# What to do with points that have no valid colour (outside the raster,
+# nodata, or transparent pixel).
+#   flag -> RGB = (0,0,0) and extra dimension color_valid = 0   [default]
+#   skip -> RGB left at 0, no flag dimension written
+#   drop -> point excluded from the output cloud
+no_color_policy: flag
+
+output:
+  dir: out
+  name: merged_class_rgb.laz
+
+chunk_size: 5000000       # points per read/write chunk
