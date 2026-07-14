@@ -1,3 +1,47 @@
+# lidar-fusion — LiDAR + Imagery Fusion / Fusión LiDAR + Imagen
+
+Fuse the geometric precision of airborne LiDAR with the spectral
+information of imagery. Stage 1 colorizes a point cloud from a
+georeferenced orthomosaic — each LiDAR point takes the real RGB
+of the pixel it falls on — turning an XYZ cloud into a
+photo-realistic 3D model.
+
+*Fusiona la precisión geométrica del LiDAR aerotransportado con la
+información espectral de la imagen. La Etapa 1 coloriza una nube de
+puntos desde un ortomosaico georreferenciado — cada punto LiDAR toma
+el RGB real del píxel donde cae — convirtiendo una nube XYZ en un
+modelo 3D foto-realista.*
+
+![Colorized point cloud — detail](docs/figures/nube_colorizada_detalle.png)
+*Managed forest, south-central Chile (U0333): 67M points, LiDAR
+geometry + orthomosaic RGB. Bosque manejado, centro-sur de Chile:
+67M de puntos, geometría LiDAR + RGB del ortomosaico.*
+
+## Why this matters / Por qué importa
+
+LiDAR gives you precise 3D structure but no colour or spectral
+information; imagery gives you rich colour but no reliable 3D. Fusing
+them is where 2026's most useful reality-capture work lives — species
+discrimination, live-vs-dead vegetation, health mapping in 3D. This
+repo builds that fusion from the ground up, starting with colorization
+and a reusable per-point raster sampler that scales to vegetation
+indices and (in future) multispectral/hyperspectral data.
+
+*El LiDAR da estructura 3D precisa pero sin color ni información
+espectral; la imagen da color rico pero sin 3D confiable. Fusionarlos
+es donde está el trabajo de reality-capture más útil de 2026 —
+discriminación de especies, vegetación viva vs. seca, mapas de salud
+en 3D. Este repo construye esa fusión desde la base, empezando por la
+colorización y un muestreador de ráster por punto reutilizable que
+escala a índices de vegetación y (a futuro) datos
+multiespectrales/hiperespectrales.*
+
+
+![Colorized point cloud — canopy detail](docs/figures/nube_colorizada_detalle.png)
+*Managed forest, south-central Chile (U0333): LiDAR geometry + orthomosaic RGB, 67M points. / Bosque manejado, centro-sur de Chile: geometría LiDAR + RGB del ortomosaico, 67M de puntos.*
+
+![Colorized point cloud — full block](docs/figures/nube_colorizada_bloque.png)
+
 # lidar-fusion
 
 Fuse raster information into a LiDAR point cloud. **Stage 1 (this release):
