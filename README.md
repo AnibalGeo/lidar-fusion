@@ -18,6 +18,9 @@ foto-realista.*
 
 
 ![Colorized point cloud — 3D view](docs/figures/3d.png)
+
+
+
 ## Why this matters / Por qué importa
 
 LiDAR gives you precise 3D structure but no colour or spectral
